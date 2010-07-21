@@ -253,20 +253,6 @@
 		});
 		</code>
 		
-		<h3 id="trigger">Logging the State Changes in Google Analytics</h3>
-		<p>Originally Google Analytics will only perform one single page log once the page has loaded through. As we are now modifying our page's state dynamically without refreshing the browser, we would naturally want to Google Analytics to log these changes too! We can inform GA by using the following code:</p>
-		<code class="code language-javascript">
-		$(function(){
-			$('#zucchini').click(function(){
-				// Make it so when the zucchini element is clicked
-				// We trigger the state: /zucchini
-				// However we do not change to the state. Perhaps this state should remain secret to the user?
-				//  Or by changing one state, we want to change another - for instance change the main page, and change the sidebar
-				$.History.trigger('/zucchini');
-			});
-		});
-		</code>
-		
 	</div>
 	
 	<div class="section">
