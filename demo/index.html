@@ -1,0 +1,371 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>
+        jQuery History - Simple History Handler/Remote for Hash, State, Bookmarking, and Forward Back Buttons
+    </title>
+	
+	<!-- Include jQuery (History Requirement) -->
+	<script type="text/javascript" src="../scripts/jquery-1.4.2.min.js"></script>
+	<!-- Include jQuery History -->
+	<script type="text/javascript" src="../scripts/jquery.history.min.js"></script>
+	
+	<!-- Include The Demo's Requirements -->
+	<link type="text/css" rel="stylesheet" media="screen" href="./styles/style.css" />
+</head>
+<body>
+	<!-- Include this demo's requirements -->
+	<!-- beautyOfCode -->
+	<script type="text/javascript" src="./scripts/jquery.beautyOfCode.min.js"></script>
+	<script type="text/javascript">/*<![CDATA[*/
+		$.beautyOfCode.init({
+			defaults: { gutter: true },
+			brushes: ["Xml", "JScript", "Css"]
+		}); 
+	/*]]>*/</script>
+	<!-- GetSatisfaction -->
+	<script type="text/javascript" src="http://s3.amazonaws.com/getsatisfaction.com/javascripts/feedback-v2.js"></script> 
+	<script type="text/javascript">/*<![CDATA[*/
+	var GSFN_feedback_widget = new GSFN.feedback_widget({ display: 'overlay', company: 'balupton', placement: 'right', color: '#222', style: 'question' });
+	/*]]>*/</script> 
+	
+	<div class="section links" id="links">
+		<h1>jQuery History - Simple History Handler/Remote for Hash, State, Bookmarking, and Forward Back Buttons</h1>
+		<h2><a href="http://github.com/balupton/jquery-history/downloads" title="Download" id="download">Download</a></h2>
+		<h2><a href="http://www.balupton.com/projects/jquery-history" title="Home Page">Home Page</a></h2>
+		<h2><a href="http://github.com/balupton/jquery-history" title="Project Page">Project Page</a></h2>
+		<h2><a href="http://getsatisfaction.com/balupton/products/balupton_jquery_history" title="Support Page" class="gsfnwidget">Get Support</a></h2>
+		<h2><a href="http://github.com/balupton/jquery-history/tree/master" title="Source Code">Source Code</a></h2>
+	</div>
+	
+	<div class="section about" id="about">
+		<h2>About</h2>
+		
+		<p>
+			<strong>jQuery History</strong> allows you to easily track changes of the pages state by tracking URL Hashes. Supports changes triggered by bookmarks and back &amp; forward buttons, as well as cross browser support.
+		</p>
+		
+		<ul class="features">
+			<li>Tracks state changed within your application. States can be changed by the user via modification of the Page URL's Hash (everything after the # in the URL), or via you manually in your code.</li>
+			<li>Is able to detect all the possible ways a page's state can change. These can be via links in your code, back-forward buttons in your browser, manual modification of the URL's hash, using bookmarks that contain hashes, and finally refreshing a page with a hash.</li>
+			<li>Complete support for every major browser. Explicitly IE6 and above, Firefox 2 and above, Safari 2 and above, Chrome 1 and above, and Opera 8 and above.
+			<li><a href="#demo">Allows you to bind handlers</a> to state changes within your web application. Eg. <code>$.History.bind('myState',function(state){});</code></li>
+			<li>Allows you to trigger a <a href="#go">state change manually</a> within your code. Eg. <code>$.History.go('myState');</code></li>
+			<li>Allows you to trigger a <a href="#trigger">state handler manually</a> within your code, such that the state is not recorded. Eg. <code>$.History.trigger('myState')</code></li>
+		</ul>
+		
+		<p>This demo shows it in action, as well as providing you with tutorials and examples on how YOU can write great jQuery plugins which are configurable, extensible and translatable in minutes instead of hours.</p>
+	</div>
+	
+	<div class="section using" id="using">
+		<h2>Using jQuery History</h2>
+		
+		<h3>Seeing it work</h3>
+		
+		<p>jQuery History is all about tracking URL hash changes, so to see it in action, click through the following links:</p>
+		
+		<div id="demo">
+			<ul id="menu">
+				<li><a href="#/apricots">Learn about Apricots</a></li>
+				<li><a href="#/bananas">Lean about Bananas</a></li>
+				<li><a href="#/coconuts">Learn about Coconuts</a></li>
+			</ul>
+			<div id="result">
+				<div id="content">
+					<div id="apricots">
+						Apricots are small and orange.
+					</div>
+					<div id="bananas">
+						Bananas are long and yellow.
+					</div>
+					<div id="coconuts">
+						Coconuts are round and hairy.
+					</div>
+				</div>
+				<div id="current"></div>
+			</div>
+		</div>
+		
+		<p>As you clicked through these, you would have noticed the the result kept changing. If you have a eye for detail, you may have noticed that the page title also changes with these state changes.
+			All these changes happen because we have bound events to handle the changes of state happening in our web page/application.
+		</p>
+		
+		<h3>The code responsible</h3>
+		
+		<p>The HTML:</p>
+		<code class="code language-html">
+		&lt;div id="demo"&gt;
+			&lt;ul id="menu"&gt;
+				&lt;li&gt;&lt;a href="#/apricots"&gt;Learn about Apricots&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="#/bananas"&gt;Lean about Bananas&lt;/a&gt;&lt;/li&gt;
+				&lt;li&gt;&lt;a href="#/coconuts"&gt;Learn about Coconuts&lt;/a&gt;&lt;/li&gt;
+			&lt;/ul&gt;
+			&lt;div id="result"&gt;
+				&lt;div id="content"&gt;
+					&lt;div id="apricots"&gt;
+						Apricots are small and orange.
+					&lt;/div&gt;
+					&lt;div id="bananas"&gt;
+						Bananas are long and yellow.
+					&lt;/div&gt;
+					&lt;div id="coconuts"&gt;
+						Coconuts are round and hairy.
+					&lt;/div&gt;
+				&lt;/div&gt;
+				&lt;div id="current"&gt;&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;div&gt;
+		</code>
+		
+		<p>The JavaScript:</p>
+		<code class="code language-javascript">
+		$(function(){
+			// Fetch the elements
+			var $result = $('#result'),
+				$menu = $('#menu'),
+				$content = $('#content'),
+				$apricots = $('#apricots'),
+				$bananas = $('#bananas'),
+				$coconuts = $('#coconuts'),
+				$current = $('#current');
+			
+			// Get the tabs
+			var $tabs = $content.children();
+			
+			// Hide all our tabs initially
+			$tabs.hide();
+			
+			// Fetch our original document title
+			var document_title = document.title;
+			
+			// Define our update menu function - as this is used a lot
+			var updateMenu = function(state){
+				// Update out tab menu
+				$menu.children('li:has(a&#91;href="#'+state+'"&#93;)').addClass('active').siblings('.active').removeClass('active');
+			};
+			
+			// Bind a handler for ALL hash/state changes
+			$.History.bind(function(state){
+				// Update the current element to indicate which state we are now on
+				$current.text('Our current state is: &#91;'+state+'&#93;');
+				// Update the page's title with our current state on the end
+				document.title = document_title + ' | ' + state;
+			});
+			
+			// Bind a handler for state: apricots
+			$.History.bind('/apricots',function(state){
+				// Update Menu
+				updateMenu(state);
+				// Show apricots tab, hide the other tabs
+				$tabs.hide();
+				$apricots.stop(true,true).fadeIn(200);
+			});
+		
+			// Bind a handler for state: bananas
+			$.History.bind('/bananas',function(state){
+				// Update Menu
+				updateMenu(state);
+				// Show bananas tab, hide the other tabs
+				$tabs.hide();
+				$bananas.stop(true,true).fadeIn(200);
+			});
+			
+			// Bind a handler for state: coconuts
+			$.History.bind('/coconuts',function(state){
+				// Update Menu
+				updateMenu(state);
+				// Show coconuts tab, hide the other tabs
+				$tabs.hide();
+				$coconuts.stop(true,true).fadeIn(200);
+			});
+		});
+		</code>
+		
+		<p>
+			Perhaps the most important thing to take note of here, is instead of binding events to the tab menu elements directly, we instead bind to the <code>states</code> they cause!
+			This is a very important design change, as by binding to the state we can now support state changes in our application - such has back and forward buttons, manual hash changes, bookmarking with states, and page refreshes - all of which will load the correct state appropriately.
+			Whereas if we just bound to the tab menu elements directly, none of what we just listed would be possible! This design change is the core to building rich web applications!
+		</p>
+		
+		<p>
+			It's also important to note why we have decided to prefix our states with a forward slash <code>/</code>.
+			This is to avoid the browser from scrolling to elements which have a particular state as their <code>ID</code> attribute when the state is changed - this can become quite problematic.
+			Another added benefit of using the forward slash is that Google and other major search engines are then able to recognise it as a state of your application, and thus improve your website's SEO ability. Whereas without the forward slash, Search Engines just view it as a in-page-anchor and discard it. Isn't that smart!
+		
+		<p>
+			So that's all you need to know to get cracking. You can see installation details below. Or you can send us feedback using the button on the right. There are also a bunch of other links right up the top. Good luck :-)
+		</p>
+		
+	</div>
+	
+	<div class="section install" id="install">
+		<h2>Installation</h2>
+		
+		<h3>Step 1. Download jQuery History, and extract it to your hard drive</h3>
+		
+		<h3>Step 2. Move the extracted <code>jquery-history</code> directory to somewhere on your webserver</h3>
+		<p>If all the files were extracted without being in a directory, create a new directory called <code>jquery-history</code> and place the extracted files in that.</p>
+			
+		<h3>Step 3. Include jQuery (insert into your page's head tag)</h3>
+		<p>If your page already has jQuery included then you can skip this step.</p>
+		<code class="code language-html">
+			&lt;!-- Include jQuery (Sparkle Requirement) --&gt;
+			&lt;script type="text/javascript" src="http://www.yoursite.com/somewhere/on/your/webserver/jquery-history/scripts/jquery-1.4.2.min.js"&gt;&lt;/script&gt;
+		</code>
+		
+		<h3>Step 4. Include jQuery History (insert into your page's head tag)</h3>
+		<code class="code language-html">
+			&lt;!-- Include History (Production) --&gt;
+			&lt;script type="text/javascript" src="http://www.yoursite.com/somewhere/on/your/webserver/jquery-history/scripts/jquery.history.min.js"&gt;&lt;/script&gt;
+			&lt;link href="http://www.yoursite.com/somewhere/on/your/webserver/jquery-sparkle/styles/jquery.sparkle.min.css" media="screen" rel="stylesheet" type="text/css" &gt; 
+		</code>
+	</div>
+	
+	<div class="section using" id="using">
+		<h2>Advanced Usage with jQuery History</h2>
+		
+		<h3 id="go">Change the State Manually</h3>
+		<p>We can also change the state manually within our code by using <code>$.History.go(state)</code>. Here is an example of this below:</p>
+		<code class="code language-javascript">
+		$(function(){
+			$('#zucchini').click(function(){
+				// Make it so when the zucchini element is clicked
+				// We go to the state: /zucchini
+				// We do this rather than setting the href="#/zucchini" as the element by be a DIV not a A
+				$.History.go('/zucchini');
+			});
+		});
+		</code>
+		
+		<h3 id="trigger">Trigger a State Handler Manually</h3>
+		<p>We can also trigger a state handler manually within our code by using <code>$.History.trigger(state)</code>. Here is an example of this below:</p>
+		<code class="code language-javascript">
+		$(function(){
+			$('#zucchini').click(function(){
+				// Make it so when the zucchini element is clicked
+				// We trigger the state: /zucchini
+				// However we do not change to the state. Perhaps this state should remain secret to the user?
+				//  Or by changing one state, we want to change another - for instance change the main page, and change the sidebar
+				$.History.trigger('/zucchini');
+			});
+		});
+		</code>
+		
+		<h3 id="trigger">Logging the State Changes in Google Analytics</h3>
+		<p>Originally Google Analytics will only perform one single page log once the page has loaded through. As we are now modifying our page's state dynamically without refreshing the browser, we would naturally want to Google Analytics to log these changes too! We can inform GA by using the following code:</p>
+		<code class="code language-javascript">
+		$(function(){
+			$('#zucchini').click(function(){
+				// Make it so when the zucchini element is clicked
+				// We trigger the state: /zucchini
+				// However we do not change to the state. Perhaps this state should remain secret to the user?
+				//  Or by changing one state, we want to change another - for instance change the main page, and change the sidebar
+				$.History.trigger('/zucchini');
+			});
+		});
+		</code>
+		
+	</div>
+	
+	<div class="section">
+		<h2>Enjoy!!!</h2>
+		<p> 
+			This work is licensed under a <a rel="license" href="http://www.gnu.org/licenses/agpl.html">GNU Affero General Public License</a> &nbsp;&nbsp;|&nbsp;&nbsp; Hosting generously donated by <a href="http://www.nghosting.org/">New Generation Hosting</a><br /> 
+		</p> 
+		<br /> 
+		<form action="https://www.paypal.com/cgi-bin/webscr" method="post"><p> 
+		    <input type="hidden" name="cmd" value="_s-xclick" /> <input type="image" src="https://www.paypal.com/en_US/i/btn/x-click-but21.gif" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" /> <img alt="" src="https://www.paypal.com/en_AU/i/scr/pixel.gif" width="1" height="1" /> <input type="hidden" name="encrypted" value="-----BEGIN PKCS7-----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-----END PKCS7-----" /> 
+		</p></form> 
+		<br />
+	</div>
+	
+	<script type="text/javascript">
+		$(function(){
+			// Fetch the elements
+			var $result = $('#result'),
+				$menu = $('#menu'),
+				$content = $('#content'),
+				$apricots = $('#apricots'),
+				$bananas = $('#bananas'),
+				$coconuts = $('#coconuts'),
+				$current = $('#current');
+			
+			// Get the tabs
+			var $tabs = $content.children();
+			
+			// Hide all our tabs initially
+			$tabs.hide();
+			
+			// Fetch our original document title
+			var document_title = document.title;
+			
+			// Define our update menu function - as this is used a lot
+			var updateMenu = function(state){
+				// Update out tab menu
+				$menu.children('li:has(a[href="#'+state+'"])').addClass('active').siblings('.active').removeClass('active');
+			};
+			
+			// Bind a handler for ALL hash/state changes
+			$.History.bind(function(state){
+				// Update the current element to indicate which state we are now on
+				$current.text('Our current state is: ['+state+']');
+				// Update the page's title with our current state on the end
+				document.title = document_title + ' | ' + state;
+			});
+			
+			// Bind a handler for state: apricots
+			$.History.bind('/apricots',function(state){
+				// Update Menu
+				updateMenu(state);
+				// Show apricots tab, hide the other tabs
+				$tabs.hide();
+				$apricots.stop(true,true).fadeIn(200);
+			});
+		
+			// Bind a handler for state: bananas
+			$.History.bind('/bananas',function(state){
+				// Update Menu
+				updateMenu(state);
+				// Show bananas tab, hide the other tabs
+				$tabs.hide();
+				$bananas.stop(true,true).fadeIn(200);
+			});
+			
+			// Bind a handler for state: coconuts
+			$.History.bind('/coconuts',function(state){
+				// Update Menu
+				updateMenu(state);
+				// Show coconuts tab, hide the other tabs
+				$tabs.hide();
+				$coconuts.stop(true,true).fadeIn(200);
+			});
+		});
+	</script>
+	
+	<!-- Google Analytics --> 
+	<script type="text/javascript"> 
+		//<![CDATA[
+		var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+		document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+		//]]>
+	</script> 
+	<script type="text/javascript" src="./scripts/modernizr-1.5.min.js"></script> 
+	<script type="text/javascript"> 
+		//<![CDATA[
+		try {
+			var pageTracker = _gat._getTracker("UA-4446117-1");
+			pageTracker._initData();
+			pageTracker._setCustomVar(1, "html5.boxshadow", Modernizr.boxshadow ? "yes" : "no" , 2 );
+			pageTracker._setCustomVar(2, "html5.multiplebgs", Modernizr.multiplebgs ? "yes" : "no", 2 );
+			pageTracker._setCustomVar(3, "html5.fontface", Modernizr.fontface ? "yes" : "no", 2 );
+			pageTracker._setCustomVar(4, "html5.csstransitions", Modernizr.csstransitions ? "yes" : "no", 2 );
+			pageTracker._setCustomVar(5, "html5.borderradius", Modernizr.borderradius ? "yes" : "no", 2 );
+			pageTracker._trackPageview();
+		} catch(err) {}
+		//]]>
+	</script>
+	
+</body>
+</html>
