@@ -33,11 +33,15 @@ edithooks:
 
 refresh:
 	wget -q http://github.com/balupton/jquery-sparkle/raw/master/scripts/resources/core.console.js -O scripts/resources/core.console.js ;
+	wget -q http://github.com/balupton/jquery-sparkle/raw/master/scripts/resources/core.string.js -O scripts/resources/core.string.js ;
+	wget -q http://github.com/balupton/jquery-sparkle/raw/master/scripts/resources/jquery.extra.js -O scripts/resources/jquery.extra.js ;
 
 
 pack:
 	cat \
 		./scripts/resources/core.console.js \
+		./scripts/resources/core.string.js \
+		./scripts/resources/jquery.extra.js \
 		./scripts/resources/jquery.history.js \
 		> ./scripts/jquery.history.js;
 

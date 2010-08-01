@@ -1,35 +1,35 @@
+----
 /**
- * jQuery History - Simple History Handler/Remote for Hash, State, Bookmarking, and Forward Back Buttons
+ * This file is part of jQuery History
  * Copyright (C) 2008-2010 Benjamin Arthur Lupton
  * http://www.balupton.com/projects/jquery-history
  *
- * This file is part of jQuery History.
+ * jQuery History is free software; You can redistribute it and/or modify it under the terms of
+ * the GNU Affero General Public License version 3 as published by the Free Software Foundation.
+ * You don't have to do anything special to accept the license and you don’t have to notify
+ * anyone which that you have made that decision.
  * 
- * jQuery History is free software: you can redistribute it and/or modify
- * it under the terms of the GNU Affero General Public License as
- * published by the Free Software Foundation, either version 3 of the
- * License, or (at your option) any later version.
+ * jQuery History is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+ * without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+ * See your chosen license for more details.
  * 
- * jQuery History is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU Affero General Public License for more details.
+ * You should have received along with jQuery History:
+ * - A copy of the license used.
+ *   If not, see <http://www.gnu.org/licenses/agpl-3.0.html>.
+ * - A copy of our interpretation of the license used.
+ *   If not, see <http://github.com/balupton/jquery-history/blob/master/COPYING.txt>.
  * 
- * You should have received a copy of the GNU Affero General Public License
- * along with jQuery History.  If not, see <http://www.gnu.org/licenses/>.
- *
- * @name readme
- * @package jquery-history
- * @category jquery-plugin
- * @version 1.2.0-dev
- * @date July 21, 2010
+ * @version 1.3.0-beta
+ * @date August 01, 2010
  * @since v0.1.0-dev, July 24, 2008
+ * @category jquery-plugin
+ * @package jquery-history {@link http://www.balupton/projects/jquery-history}
  * @author Benjamin "balupton" Lupton {@link http://www.balupton.com}
  * @copyright (c) 2008-2010 Benjamin Arthur Lupton {@link http://www.balupton.com}
- * @license GNU Affero General Public License - {@link http://www.gnu.org/licenses/agpl.html}
+ * @license GNU Affero General Public License version 3 {@link http://www.gnu.org/licenses/agpl-3.0.html}
  * @example Visit {@link http://www.balupton.com/projects/jquery-history} for more information.
  */
----
+----
 
 Installation & Usage:
 1. Refer to the (demo/index.html) or http://www.balupton.com/projects/jquery-history if the demo is not included.
@@ -39,6 +39,11 @@ Todo:
 ----
 
 Changelog:
+
+v1.3.0-beta, August 01, 2010
+- Updated licensing information. Still using the same license, as it is the best there is, but just provided some more information on it to make life simpler.
+- Updated jQuery Sparkle dependencies to [v1.4.8-beta, August 01, 2010]
+- Added jQuery Ajaxy references into demo page
 
 v1.2.0-dev, July 21, 2010
 - New demo, moved to github, split from Ajaxy, added Makefile
@@ -51,7 +56,7 @@ v1.0.1-final, July 11, 2009
 - Restructured a little bit
 - Documented
 - Cleaned go/request
- *
+
 v1.0.0-final, June 19, 2009
 - Been stable for over a year now, pushing live.
 

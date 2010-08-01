@@ -33,3 +33,11 @@
 	padding-left:1em;
 	border-top: 5px solid #DDD;
 }
+
+
+body .syntaxhighlighter {
+	font-size: 14px !important;
+}
+body .syntaxhighlighter .line.alt2 {
+	background-color: white !important;
+}

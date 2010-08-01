@@ -17,14 +17,17 @@
 </head>
 <body>
 	<!-- Include this demo's requirements -->
-	<!-- beautyOfCode -->
-	<script type="text/javascript" src="./scripts/jquery.beautyOfCode.min.js"></script>
+	<!-- Include jQuery Syntax Highlighter -->
+	<script type="text/javascript" src="http://github.com/balupton/jQuery-SyntaxHighlighter/raw/master/scripts/jquery.syntaxhighlighter.min.js"></script>
+	<!-- Initialise jQuery Syntax Highlighter -->
 	<script type="text/javascript">/*<![CDATA[*/
-		$.beautyOfCode.init({
-			defaults: { gutter: true },
-			brushes: ["Xml", "JScript", "Css"]
-		}); 
+		$.SyntaxHighlighter.init({
+			'defaults': {
+				'toolbar':false
+			}
+		});
 	/*]]>*/</script>
+	
 	<!-- GetSatisfaction -->
 	<script type="text/javascript" src="http://s3.amazonaws.com/getsatisfaction.com/javascripts/feedback-v2.js"></script> 
 	<script type="text/javascript">/*<![CDATA[*/
@@ -38,6 +41,7 @@
 		<h2><a href="http://github.com/balupton/jquery-history" title="Project Page">Project Page</a></h2>
 		<h2><a href="http://getsatisfaction.com/balupton/products/balupton_jquery_history" title="Support Page" class="gsfnwidget">Get Support</a></h2>
 		<h2><a href="http://github.com/balupton/jquery-history/tree/master" title="Source Code">Source Code</a></h2>
+		<h2><a href="http://www.balupton.com/projects/jquery-ajaxy" title="Visit jQuery Ajaxy's Homepage to learn more">Ajax Integration with jQuery Ajaxy</a></h2>
 	</div>
 	
 	<div class="section about" id="about">
@@ -51,9 +55,10 @@
 			<li>Tracks state changed within your application. States can be changed by the user via modification of the Page URL's Hash (everything after the # in the URL), or via you manually in your code.</li>
 			<li>Is able to detect all the possible ways a page's state can change. These can be via links in your code, back-forward buttons in your browser, manual modification of the URL's hash, using bookmarks that contain hashes, and finally refreshing a page with a hash.</li>
 			<li>Complete support for every major browser. Explicitly IE6 and above, Firefox 2 and above, Safari 2 and above, Chrome 1 and above, and Opera 8 and above.
-			<li><a href="#demo">Allows you to bind handlers</a> to state changes within your web application. Eg. <code>$.History.bind('myState',function(state){});</code></li>
-			<li>Allows you to trigger a <a href="#go">state change manually</a> within your code. Eg. <code>$.History.go('myState');</code></li>
-			<li>Allows you to trigger a <a href="#trigger">state handler manually</a> within your code, such that the state is not recorded. Eg. <code>$.History.trigger('myState')</code></li>
+			<li><a href="#demo" title="Learn more about this feature">Allows you to bind handlers</a> to state changes within your web application. Eg. <code>$.History.bind('myState',function(state){});</code></li>
+			<li>Allows you to trigger a <a href="#go" title="Learn more about this feature">state change manually</a> within your code. Eg. <code>$.History.go('myState');</code></li>
+			<li>Allows you to trigger a <a href="#trigger" title="Learn more about this feature">state handler manually</a> within your code, such that the state is not recorded. Eg. <code>$.History.trigger('myState')</code></li>
+			<li><a href="#ajax" title="Learn more about this feature">Allows for easy integration with Ajax Applications</a> via the use of <a href="http://www.balupton.com/projects/jquery-ajaxy" class="extern" title="Visit jQuery Ajaxy's Homepage to learn more">jQuery Ajaxy</a>.</li>
 		</ul>
 		
 		<p>This demo shows it in action, as well as providing you with tutorials and examples on how YOU can write great jQuery plugins which are configurable, extensible and translatable in minutes instead of hours.</p>
@@ -195,7 +200,7 @@
 			Another added benefit of using the forward slash is that Google and other major search engines are then able to recognise it as a state of your application, and thus improve your website's SEO ability. Whereas without the forward slash, Search Engines just view it as a in-page-anchor and discard it. Isn't that smart!
 		
 		<p>
-			So that's all you need to know to get cracking. You can see installation details below. Or you can send us feedback using the button on the right. There are also a bunch of other links right up the top. Good luck :-)
+			So that's all you need to know to get cracking. You can see installation details below. Or you can send us feedback using the button on the right. There are also a bunch of other links right up the top, and some advanced use cases down the bottom such as integration with Ajax. Good Luck and Happy Coding! :-)
 		</p>
 		
 	</div>
@@ -219,7 +224,6 @@
 		<code class="code language-html">
 			&lt;!-- Include History (Production) --&gt;
 			&lt;script type="text/javascript" src="http://www.yoursite.com/somewhere/on/your/webserver/jquery-history/scripts/jquery.history.min.js"&gt;&lt;/script&gt;
-			&lt;link href="http://www.yoursite.com/somewhere/on/your/webserver/jquery-sparkle/styles/jquery.sparkle.min.css" media="screen" rel="stylesheet" type="text/css" &gt; 
 		</code>
 	</div>
 	
@@ -252,6 +256,20 @@
 			});
 		});
 		</code>
+		
+		<h3 id="ajax">Using it with Ajax</h3>
+		<p>
+			There's nothing stopping us right now from using jQuery History with Ajax, such that we can truly say we are Web 2.0 gurus. But there are many complicated issue that can arise. Such as:
+		</p>
+		<ul class="issues">
+			<li>How do you easily specify that this link is meant to perform a Ajax request while maintaining history?</li>
+			<li>How do you continue to support Search Engines and Users without Javascript in true Web 2.0 Ajax application?</li>
+			<li>How do you easily update the page title for these Ajax requests just as you would if they were normal pages?</li>
+			<li>How do you keep track of the data sent with Ajax requests such that when you traverse through the history the states are restored as is?</li>
+		</ul>
+		<p>
+			These are just some of the really complicated issues you may come across which are inherent in all Web 2.0 Ajax applications. Luckily we have another project which extends jQuery History to achieve Ajax functionality, solving those complicated issues (and some others that are more difficult to explain) and remaining easy to use. <a href="http://www.balupton.com/projects/jquery-ajaxy" class="extern" title="Visit jQuery Ajaxy's Homepage to learn more">We call it jQuery Ajaxy and you can find it here.</a>
+		</p>
 		
 	</div>
 	

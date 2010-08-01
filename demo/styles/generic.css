@@ -104,12 +104,14 @@ a.help:visited {
 .section.install h3 {
 	margin: 0.83em 0px 0.2em;
 }
-.section ul.features {
+.section ul.features,
+.section ul.issues {
 	display: block;
 	list-style: disc;
 	margin-left:2em;
 }
-.section ul.features li {
+.section ul.features li,
+.section ul.issues li {
 	list-style: disc;
 	display: list-item;
 }
@@ -155,3 +157,6 @@ a.help:visited {
     padding-top: 10px;
 }
 
+body.loading {
+	cursor:wait;
+}

@@ -1,17 +1,19 @@
 /**
  * @depends nothing
  * @name core.console
- * @package jquery-sparkle
+ * @package jquery-sparkle {@link http://www.balupton/projects/jquery-sparkle}
  */
 
 /**
  * Console Emulator
  * We have to convert arguments into arrays, and do this explicitly as webkit (chrome) hates function references, and arguments cannot be passed as is
  * @version 1.0.1
- * @since 1.0.0 June 20, 2010
  * @date July 09, 2010
+ * @since 0.1.0-dev, December 01, 2009
+ * @package jquery-sparkle {@link http://www.balupton/projects/jquery-sparkle}
  * @author Benjamin "balupton" Lupton {@link http://www.balupton.com}
  * @copyright (c) 2009-2010 Benjamin Arthur Lupton {@link http://www.balupton.com}
+ * @license GNU Affero General Public License version 3 {@link http://www.gnu.org/licenses/agpl-3.0.html}
  */
 if ( typeof window.console !== 'object' || typeof window.console.emulated === 'undefined' ) {
 	// Check to see if console exists
