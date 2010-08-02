@@ -635,8 +635,8 @@ String.prototype.queryStringToJSON = String.prototype.queryStringToJSON || funct
 	
 	/**
 	 * jQuery History
-	 * @version 1.3.0
-	 * @date August 01, 2010
+	 * @version 1.4.0
+	 * @date August 03, 2010
 	 * @since 0.1.0-dev, July 24, 2008
      * @package jquery-history {@link http://www.balupton/projects/jquery-history}
 	 * @author Benjamin "balupton" Lupton {@link http://www.balupton.com}
@@ -669,21 +669,54 @@ String.prototype.queryStringToJSON = String.prototype.queryStringToJSON || funct
 		
 			// --------------------------------------------------
 			// Functions
-		
+			
 			/**
-			 * Format a hash into a proper state
+			 * Extract the Hash from a URL
 			 * @param {String} hash
 			 */
-			format: function ( hash ) {
-				// Format the hash
-				hash = hash
-					.replace(/^.*#/g, '') /* strip anything before the anchor in case we were passed a url */
+			extractHash: function ( url ) {
+				// Extract the hash
+				var hash = url
+					.replace(/^[^#]*#/, '')	/* strip anything before the first anchor */
+					.replace(/^#+|#+$/, '')
 					;
-			
-				// Return the hash
+				
+				// Return hash
 				return hash;
 			},
-		
+			
+			/**
+			 * Extract the State from a URL
+			 * @param {String} hash
+			 */
+			extractState: function ( hash ) {
+				// Extract the state
+				var state = hash
+					.replace(/#.*$/, '')	/* strip anything after the first anchor */
+					.replace(/^#+|#+$/, '')
+					;
+				
+				// Return state
+				return state;
+			},
+			
+			/**
+			 * Fetch the Anchor from a State
+			 * @param {String} hash
+			 */
+			extractAnchor: function ( hash ) {
+				var History = $.History;
+				
+				// Extract the anchor
+				var anchor = hash
+					.replace(/^.*#/, '')	/* strip anything before the last anchor */
+					.replace(/^#+|#+$/, '')
+					;
+				
+				// Return anchor
+				return anchor;
+			},
+			
 			/**
 			 * Get the current state of the application
 			 */
@@ -700,7 +733,7 @@ String.prototype.queryStringToJSON = String.prototype.queryStringToJSON || funct
 			setState: function ( state ) {
 				var History = $.History;
 				// Format the state
-				state = History.format(state)
+				state = History.extractHash(state)
 			
 				// Apply the state
 				History.state = state;
@@ -716,7 +749,7 @@ String.prototype.queryStringToJSON = String.prototype.queryStringToJSON || funct
 				var History = $.History;
 			
 				// Get the hash
-				var hash = History.format(window.location.hash || location.hash);
+				var hash = History.extractHash(window.location.hash || location.hash);
 			
 				// Return the hash
 				return hash;
@@ -730,7 +763,7 @@ String.prototype.queryStringToJSON = String.prototype.queryStringToJSON || funct
 				var History = $.History;
 			
 				// Prepare hash
-				hash = History.format(hash);
+				hash = History.extractHash(hash);
 			
 				// Write hash
 				if ( typeof window.location.hash !== 'undefined' ) {
@@ -753,7 +786,7 @@ String.prototype.queryStringToJSON = String.prototype.queryStringToJSON || funct
 				var History = $.History;
 			
 				// Format
-				to = History.format(to);
+				to = History.extractHash(to);
 			
 				// Get current
 				var hash = History.getHash();
@@ -951,7 +984,7 @@ String.prototype.queryStringToJSON = String.prototype.queryStringToJSON || funct
 							// Fetch
 							var hash = History.getHash();
 							var state = History.getState();
-							var iframeHash = History.format(History.$iframe.contentWindow.document.location.hash);
+							var iframeHash = History.extractHash(History.$iframe.contentWindow.document.location.hash);
 						
 							// Check if the browser hash is different
 							if ( state !== hash ) {
