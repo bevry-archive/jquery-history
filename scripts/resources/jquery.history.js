@@ -11,8 +11,8 @@
 	
 	/**
 	 * jQuery History
-	 * @version 1.4.0
-	 * @date August 03, 2010
+	 * @version 1.4.1
+	 * @date August 05, 2010
 	 * @since 0.1.0-dev, July 24, 2008
      * @package jquery-history {@link http://www.balupton/projects/jquery-history}
 	 * @author Benjamin "balupton" Lupton {@link http://www.balupton.com}
@@ -59,38 +59,6 @@
 				
 				// Return hash
 				return hash;
-			},
-			
-			/**
-			 * Extract the State from a URL
-			 * @param {String} hash
-			 */
-			extractState: function ( hash ) {
-				// Extract the state
-				var state = hash
-					.replace(/#.*$/, '')	/* strip anything after the first anchor */
-					.replace(/^#+|#+$/, '')
-					;
-				
-				// Return state
-				return state;
-			},
-			
-			/**
-			 * Fetch the Anchor from a State
-			 * @param {String} hash
-			 */
-			extractAnchor: function ( hash ) {
-				var History = $.History;
-				
-				// Extract the anchor
-				var anchor = hash
-					.replace(/^.*#/, '')	/* strip anything before the last anchor */
-					.replace(/^#+|#+$/, '')
-					;
-				
-				// Return anchor
-				return anchor;
 			},
 			
 			/**
