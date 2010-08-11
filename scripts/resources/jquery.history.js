@@ -11,8 +11,8 @@
 	
 	/**
 	 * jQuery History
-	 * @version 1.4.1
-	 * @date August 05, 2010
+	 * @version 1.4.2
+	 * @date August 12, 2010
 	 * @since 0.1.0-dev, July 24, 2008
      * @package jquery-history {@link http://www.balupton/projects/jquery-history}
 	 * @author Benjamin "balupton" Lupton {@link http://www.balupton.com}
@@ -294,16 +294,86 @@
 				// All done
 				return true;
 			},
-		
+			
+			/**
+			 * Determines whether or not our browser has native support for the required onhashchange event.
+			 * Unfortunately we have to test against a known range of browsers, as doing a automatic test would require testing the onhashchange functionality
+			 * which would require a state change that we do not want.
+			 * @param {Object} browser [optional]
+			 */
+			nativeSupport: function ( browser ) {
+				// Prepare
+				browser = browser||$.browser;
+				var	browserVersion = browser.version,
+					browserVersionInt = parseInt(browserVersion,10),
+					browserVersionParts = browserVersion.split(/[^0-9]/g),
+					browserVersionPartsOne = parseInt(browserVersionParts[0],10),
+					browserVersionPartsTwo = parseInt(browserVersionParts[1],10),
+					browserVersionPartsThree = parseInt(browserVersionParts[2],10),
+					nativeSupport = false;
+				
+				// Determine if we are running under a browser which has nativeSupport for the onhashchange event
+				// >= MSIE 8
+				if ( (browser.msie||false) && browserVersionInt >= 8 ) {
+					nativeSupport = true;
+				}
+				// >= Webkit 528
+				else if ( (browser.webkit||false) && browserVersionInt >= 528 ) {
+					nativeSupport = true;
+				}
+				// >= Gecko 1.9.2.x
+				else if ( (browser.mozilla||false) ) {
+					// > Gecko 1
+					if ( browserVersionPartsOne > 1 ) {
+						nativeSupport = true;
+					}
+					// = Gecko 1
+					else if ( browserVersionPartsOne === 1 ) {
+						// > Gecko 1.9
+						if ( browserVersionPartsTwo > 9 ) {
+							nativeSupport = true;
+						}
+						// = Gecko 1.9
+						else if ( browserVersionPartsTwo === 9 ) {
+							// >= Gecko 1.9.2
+							if ( browserVersionPartsThree >= 2 ) {
+								nativeSupport = true;
+							}
+						}
+					}
+				}
+				// >= Opera 10.60
+				else if ( (browser.opera||false) ) {
+					// > Opera 10
+					if ( browserVersionPartsOne > 10 ) {
+						nativeSupport = true;
+					}
+					// = Opera 10
+					else if ( browserVersionPartsOne === 10 ) {
+						// >= Opera 10.60
+						if ( browserVersionPartsTwo >= 60 ) {
+							nativeSupport = true;
+						}
+					}
+				}
+				
+				// Return nativeSupport
+				return nativeSupport;
+			},
+			
 			/**
 			 * Enable hashchange for all browsers
+			 * For browsers which do not have native support, the support must be emulated.
 			 */
 			hashchangeLoader: function () {
 				var History = $.History;
-			
-				// More is needed for non IE8 browsers
-				if ( !($.browser.msie && parseInt($.browser.version) >= 8) ) {	
-					// We are not IE8
+				
+				// Fetch nativeSupport
+				var nativeSupport = History.nativeSupport();
+				
+				// Check whether or not we need to implement a unfortunate but required workaround for browsers without nativeSupport
+				if ( !nativeSupport ) {	
+					// We are not IE8, or another browser which supports onhashchange natively
 			
 					// State our checker function, it is used to constantly check the location to detect a change
 					var checker;
@@ -393,7 +463,7 @@
 					setInterval(checker, 200);
 				}
 				else {
-					// We are IE8
+					// We are IE8, or another browser which supports onhashchange natively
 				
 					// Fire the initial
 					var hash = History.getHash();
