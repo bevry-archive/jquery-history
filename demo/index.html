@@ -95,7 +95,7 @@
 		<h3>The code responsible</h3>
 		
 		<p>The HTML:</p>
-		<code class="code language-html">
+		<pre class="code language-html">
 		&lt;div id="demo"&gt;
 			&lt;ul id="menu"&gt;
 				&lt;li&gt;&lt;a href="#/apricots"&gt;Learn about Apricots&lt;/a&gt;&lt;/li&gt;
@@ -117,10 +117,10 @@
 				&lt;div id="current"&gt;&lt;/div&gt;
 			&lt;/div&gt;
 		&lt;div&gt;
-		</code>
+		</pre>
 		
 		<p>The JavaScript:</p>
-		<code class="code language-javascript">
+		<pre class="code language-javascript">
 		$(function(){
 			// Fetch the elements
 			var $result = $('#result'),
@@ -181,7 +181,7 @@
 				$coconuts.stop(true,true).fadeIn(200);
 			});
 		});
-		</code>
+		</pre>
 		
 		<p>
 			Perhaps the most important thing to take note of here, is instead of binding events to the tab menu elements directly, we instead bind to the <code>states</code> they cause!
@@ -218,16 +218,16 @@
 		
 		<h3>Step 3. Include jQuery (insert into your page's head tag)</h3>
 		<p>If your page already has jQuery included then you can skip this step.</p>
-		<code class="code language-html">
+		<pre class="code language-html">
 			&lt;!-- Include jQuery (History Requirement) --&gt;
 			&lt;script type="text/javascript" src="http://www.yoursite.com/somewhere/on/your/webserver/jquery-history/scripts/jquery-1.4.2.min.js"&gt;&lt;/script&gt;
-		</code>
+		</pre>
 		
 		<h3>Step 4. Include jQuery History (insert into your page's head tag)</h3>
-		<code class="code language-html">
+		<pre class="code language-html">
 			&lt;!-- Include History (Production) --&gt;
 			&lt;script type="text/javascript" src="http://www.yoursite.com/somewhere/on/your/webserver/jquery-history/scripts/jquery.history.min.js"&gt;&lt;/script&gt;
-		</code>
+		</pre>
 	</div>
 	
 	<div class="section using" id="using">
@@ -235,7 +235,7 @@
 		
 		<h3 id="go">Change the State Manually</h3>
 		<p>We can also change the state manually within our code by using <code>$.History.go(state)</code>. Here is an example of this below:</p>
-		<code class="code language-javascript">
+		<pre class="code language-javascript">
 		$(function(){
 			$('#zucchini').click(function(){
 				// Make it so when the zucchini element is clicked
@@ -244,11 +244,11 @@
 				$.History.go('/zucchini');
 			});
 		});
-		</code>
+		</pre>
 		
 		<h3 id="trigger">Trigger a State Handler Manually</h3>
 		<p>We can also trigger a state handler manually within our code by using <code>$.History.trigger(state)</code>. Here is an example of this below:</p>
-		<code class="code language-javascript">
+		<pre class="code language-javascript">
 		$(function(){
 			$('#zucchini').click(function(){
 				// Make it so when the zucchini element is clicked
@@ -258,7 +258,7 @@
 				$.History.trigger('/zucchini');
 			});
 		});
-		</code>
+		</pre>
 		
 		<h3 id="ajax">Using it with Ajax</h3>
 		<p>
