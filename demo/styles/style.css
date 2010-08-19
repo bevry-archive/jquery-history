@@ -2,6 +2,9 @@
 @import url("./yui-reset-3.1.1-min.css");
 @import url("./generic.css");
 
+#demo, #demo div {
+	margin:0;
+}
 #demo {
 	margin: 1em 0;
 	padding: 0;
@@ -32,12 +35,4 @@
 	padding:0;
 	padding-left:1em;
 	border-top: 5px solid #DDD;
-}
-
-
-body .syntaxhighlighter {
-	font-size: 14px !important;
-}
-body .syntaxhighlighter .line.alt2 {
-	background-color: white !important;
 }

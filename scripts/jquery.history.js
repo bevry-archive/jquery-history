@@ -621,7 +621,76 @@ String.prototype.queryStringToJSON = String.prototype.queryStringToJSON || funct
 		return $(this).effect('highlight', {}, duration||3000);
 	};
 	
-
+	/**
+	 * Get a elements html including it's own tag
+	 * @version 1.0.1
+	 * @date August 07, 2010
+	 * @since 1.0.0, August 07, 2010
+     * @package jquery-sparkle {@link http://www.balupton/projects/jquery-sparkle}
+	 * @author Benjamin "balupton" Lupton {@link http://www.balupton.com}
+	 * @copyright (c) 2009-2010 Benjamin Arthur Lupton {@link http://www.balupton.com}
+	 * @license GNU Affero General Public License version 3 {@link http://www.gnu.org/licenses/agpl-3.0.html}
+	 */
+	$.fn.htmlAndSelf = $.fn.htmlAndSelf || function(){
+		// Get a elements html including it's own tag
+		return $(this).attr('outerHTML');
+	};
+	
+	/**
+	 * Prevent the default action when a click is performed
+	 * @version 1.0.0
+	 * @date August 19, 2010
+	 * @since 1.0.0, August 19, 2010
+     * @package jquery-sparkle {@link http://www.balupton/projects/jquery-sparkle}
+	 * @author Benjamin "balupton" Lupton {@link http://www.balupton.com}
+	 * @copyright (c) 2009-2010 Benjamin Arthur Lupton {@link http://www.balupton.com}
+	 * @license GNU Affero General Public License version 3 {@link http://www.gnu.org/licenses/agpl-3.0.html}
+	 */
+	$.fn.preventDefault = $.fn.preventDefault || function(){
+		return $(this).click(function(event){
+			event.preventDefault();
+			return false;
+		});
+	};
+	
+	/**
+	 * Attempts to change the element type to {$type}
+	 * @version 1.0.1
+	 * @date August 07, 2010
+	 * @since 1.0.0, August 07, 2010
+     * @package jquery-sparkle {@link http://www.balupton/projects/jquery-sparkle}
+	 * @author Benjamin "balupton" Lupton {@link http://www.balupton.com}
+	 * @copyright (c) 2009-2010 Benjamin Arthur Lupton {@link http://www.balupton.com}
+	 * @license GNU Affero General Public License version 3 {@link http://www.gnu.org/licenses/agpl-3.0.html}
+	 */
+	$.fn.attemptTypeChangeTo = $.fn.attemptTypeChangeTo || function(type){
+		// Prepare
+		var	$input = $(this),
+			result = false,
+			el = $input.get(0),
+			oldType = el.type;
+			
+		// Handle
+		if ( type === oldType ) {
+			// Setting to the same
+			result = true;
+		}
+		else if ( $input.is('input') ) {
+			// We are in fact an input
+			if ( !$.browser.msie ) {
+				// We are not IE, this is due to bug mentioned here: http://stackoverflow.com/questions/1544317/jquery-change-type-of-input-field
+				el.type = type;
+				if ( el.type !== oldType ) {
+					// It stuck, so we successfully applied the type
+					result = true;
+				}
+			}
+		}
+		
+		// Return result
+		return result;
+	};
+	
 })(jQuery);/**
  * @depends jquery, core.console
  * @name jquery.history

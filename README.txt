@@ -19,8 +19,8 @@
  * - A copy of our interpretation of the license used.
  *   If not, see <http://github.com/balupton/jquery-history/blob/master/COPYING.txt>.
  * 
- * @version 1.4.2-final
- * @date August 12, 2010
+ * @version 1.4.3-final
+ * @date August 19, 2010
  * @since v0.1.0-dev, July 24, 2008
  * @category jquery-plugin
  * @package jquery-history {@link http://www.balupton/projects/jquery-history}
@@ -39,6 +39,12 @@ Todo:
 ----
 
 Changelog:
+
+v1.4.3-final, August 19, 2010
+- Improved installation instructions to make more clear.
+- Updated Syntax Highlighter include and initialisation. We use http://www.balupton.com/projects/jquery-syntaxhighlighter
+- Code blocks within the demo are now using PRE instead of CODE elements due to an IE bug.
+- Updated jQuery Sparkle dependencies to [v1.4.14-final, August 19, 2010]
 
 v1.4.2-final, August 12, 2010
 - Now recognises the new wave of browsers which also have native support for the onhashchange event.

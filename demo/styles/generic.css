@@ -1,26 +1,22 @@
-
 /* CSS */
 
 h1 {
 	font-size: 2.5em;
 	font-weight: bold;
-	margin: 0.67em 0px;
+	margin: 0.67em 0px 0.5em;
 }
 h2 {
 	font-size: 2em;
 	font-weight: bold;
-	margin: 0.83em 0px;
+	margin: 0.83em 0px 0.4em;
 }
 h3 {
 	font-size: 1.5em;
 	font-weight: bold;
-	margin: 0.83em 0px;
+	margin: 0.83em 0px 0.3em;
 }
 
-body .syntaxhighlighter {
-	border: 5px solid #DDD !IMPORTANT;
-}
-code.code, pre {
+code.code, pre.code {
 	border: 5px solid #DDD;
 	padding: 7px 0 5px;
 	font-size: 14px;
@@ -29,6 +25,10 @@ code.code, pre {
 	width: 100%;
 	white-space: pre;
 	display: block;
+}
+body code.prettyprint, body pre.prettyprint {
+	border: 5px solid #DDD;
+	padding: 7px 0 5px;
 }
 
 strong {
@@ -45,13 +45,17 @@ body {
     color: #000000;
 }
 
-p {
+
+p,
+.section div {
     padding: 0px;
-    margin: 0px;
-}
-p, .section.about p {
 	margin:1em 0;
 }
+.section.install p,
+.section.install div {
+	margin:0.2em 0 1em;
+}
+
 
 textarea {
 	width: 100%;
@@ -101,18 +105,24 @@ a.help:visited {
 	border-bottom:1px dotted #551A8B;
 }
 
-.section.install h3 {
-	margin: 0.83em 0px 0.2em;
-}
-.section ul.features,
-.section ul.issues {
+.section ul.features {
 	display: block;
 	list-style: disc;
 	margin-left:2em;
 }
-.section ul.features li,
-.section ul.issues li {
+.section ul.features li {
 	list-style: disc;
+	display: list-item;
+}
+
+.section ul.install,
+.section ul.install li {
+	list-style:disc outside none;
+}
+.section ul.install {
+	margin-left:2em;
+}
+.section ul.install li {
 	display: list-item;
 }
 
