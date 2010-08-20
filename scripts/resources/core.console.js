@@ -7,8 +7,8 @@
 /**
  * Console Emulator
  * We have to convert arguments into arrays, and do this explicitly as webkit (chrome) hates function references, and arguments cannot be passed as is
- * @version 1.0.1
- * @date July 09, 2010
+ * @version 1.0.2
+ * @date August 21, 2010
  * @since 0.1.0-dev, December 01, 2009
  * @package jquery-sparkle {@link http://www.balupton/projects/jquery-sparkle}
  * @author Benjamin "balupton" Lupton {@link http://www.balupton.com}
@@ -17,12 +17,22 @@
  */
 if ( typeof window.console !== 'object' || typeof window.console.emulated === 'undefined' ) {
 	// Check to see if console exists
-	if ( typeof window.console !== 'object' || typeof window.console.log !== 'function' ) {
+	if ( typeof window.console !== 'object' || !(typeof window.console.log === 'function' || typeof window.console.log === 'object') ) {
 		// Console does not exist
 		window.console = {};
 		window.console.log = window.console.debug = window.console.warn = window.console.trace = function(){};
 		window.console.error = function(){
-			alert("An error has occured. Please use another browser to obtain more detailed information.");
+			var msg = "An error has occured. More information will be available in the console log.";
+			for ( var i = 0; i < arguments.length; ++i ) {
+				if ( typeof arguments[i] !== 'string' ) { break; }
+				msg += "\n"+arguments[i];
+			}
+			if ( typeof Error !== 'undefined' ) {
+				throw new Error(msg);
+			}
+			else {
+				throw(msg);
+			}
 		};
 	}
 	else {
