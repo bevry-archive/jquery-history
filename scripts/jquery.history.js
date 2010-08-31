@@ -146,6 +146,7 @@ if ( typeof window.console !== 'object' || typeof window.console.emulated === 'u
 			 */
 			setState: function ( state ) {
 				var History = $.History;
+				
 				// Format the state
 				state = History.extractHash(state)
 			
@@ -203,8 +204,8 @@ if ( typeof window.console !== 'object' || typeof window.console.emulated === 'u
 				to = History.extractHash(to);
 			
 				// Get current
-				var hash = History.getHash();
-				var state = History.getState();
+				var	hash = History.getHash(),
+					state = History.getState();
 			
 				// Has the hash changed
 				if ( to !== hash ) {
@@ -251,7 +252,7 @@ if ( typeof window.console !== 'object' || typeof window.console.emulated === 'u
 			bind: function ( state, handler ) {
 				var History = $.History;
 			
-				// 
+				// Handle
 				if ( handler ) {
 					// We have a state specific handler
 					// Prepare
