@@ -33,23 +33,18 @@ edithooks:
 
 refresh:
 	wget -q http://github.com/balupton/jquery-sparkle/raw/master/scripts/resources/core.console.js -O scripts/resources/core.console.js ;
-	wget -q http://github.com/balupton/jquery-sparkle/raw/master/scripts/resources/core.string.js -O scripts/resources/core.string.js ;
-	wget -q http://github.com/balupton/jquery-sparkle/raw/master/scripts/resources/jquery.extra.js -O scripts/resources/jquery.extra.js ;
 	wget -q http://github.com/balupton/jquery-history/raw/master/demo/styles/generic.css -O demo/styles/generic.css ;
 
 
 pack:
 	cat \
 		./scripts/resources/core.console.js \
-		./scripts/resources/core.string.js \
-		./scripts/resources/jquery.extra.js \
 		./scripts/resources/jquery.history.js \
 		> ./scripts/jquery.history.js;
 
 compress:
 	java -jar $(CLOSUREFILE) --create_source_map ./scripts/closure.map --js_output_file=./scripts/jquery.history.min.js --js=./scripts/jquery.history.js;
-	#java -jar $(YUIFILE) ./styles/jquery.history.css -o ./styles/jquery.history.min.css
-
+	
 build:
 	$(MAKE) pack;
 	$(MAKE) compress;

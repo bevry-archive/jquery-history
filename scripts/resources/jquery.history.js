@@ -11,8 +11,8 @@
 	
 	/**
 	 * jQuery History
-	 * @version 1.4.2
-	 * @date August 12, 2010
+	 * @version 1.5.0
+	 * @date August 31, 2010
 	 * @since 0.1.0-dev, July 24, 2008
      * @package jquery-history {@link http://www.balupton/projects/jquery-history}
 	 * @author Benjamin "balupton" Lupton {@link http://www.balupton.com}
