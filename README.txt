@@ -19,7 +19,7 @@
  * - A copy of our interpretation of the license used.
  *   If not, see <http://github.com/balupton/jquery-history/blob/master/COPYING.txt>.
  * 
- * @version 1.5.0-dev
+ * @version 1.5.0-final
  * @date August 31, 2010
  * @since v0.1.0-dev, July 24, 2008
  * @category jquery-plugin
@@ -38,7 +38,7 @@ Todo:
 1. Fix known issues if there are any.
 
 Known Issues:
-1. There are problems with jQuery AutoComplete.
+1. None. Yay!
 
 
 ----
@@ -65,8 +65,8 @@ It is not included within jQuery History by default, as it is not essential.
 
 Changelog:
 
-v1.5.0-dev, August 31, 2010
-- Removed core.string.js and jquery.extra.js as they were not needed.
+v1.5.0-final, August 31, 2010
+- Removed core.string.js and jquery.extra.js as they were not needed. Fixes issue with autocomplete.
 - Updated jQuery Sparkle dependencies to [v1.5.1-beta, August 31, 2010]
 
 v1.4.4-final, August 21, 2010
