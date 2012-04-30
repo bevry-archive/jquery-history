@@ -30,7 +30,7 @@ And place it within your own code. It is not included within jQuery History by d
 
 ## History
 
-You can discover the history inside the [History.md](https://github.com/balupton/jquery-ajaxy/blob/master/History.md#files) file
+You can discover the history inside the [History.md](https://github.com/balupton/jquery-history/blob/master/History.md#files) file
 
 
 ## License
